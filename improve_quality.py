@@ -191,11 +191,11 @@ crop_fraction = 0.05
 
 # Process one image
 path_to_image = "data/1854/images/1854_page_0008.jpg"
-process_image(path_to_image, threshold, crop_fraction)
+#process_image(path_to_image, threshold, crop_fraction)
 
 # Process images in one directory
 path_to_directory = "data/1854"
-#process_directory(path_to_directory)
+process_directory(path_to_directory)
 
 # Process images in all directories
 root_directory = "data"

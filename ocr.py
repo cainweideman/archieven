@@ -1,3 +1,24 @@
+"""
+OCR Processing Script
+
+This script processes images within a specified directory, performing OCR (Optical Character Recognition) on each image.
+- The extracted text is saved in a structured JSON file with page numbers and text content.
+
+Modules:
+    - pytesseract: For performing OCR on images.
+    - PIL.Image: For opening and processing image files.
+    - os: For directory and file handling.
+    - json: For storing extracted text in JSON format.
+
+Functions:
+    - ocr_page: Performs OCR on a single image and returns the text.
+    - ocr_directory: Performs OCR on all images within a directory, saving results to a JSON file.
+
+Requires:
+    - Tesseract OCR installed and configured (path set in pytesseract.pytesseract.tesseract_cmd).
+"""
+
+
 import pytesseract
 from PIL import Image
 import os
@@ -5,29 +26,91 @@ import json
 
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
-directory = 'cleaned/1968'
-filenames = os.listdir(directory)
+def ocr_page(path_to_image, language="nld"):
+	"""
+	Performs OCR on a single image and returns the extracted text.
 
-data = {
-	"year": 1968,
-	"content": []
-}
+	Parameters:
+	path_to_image (str): Path to the image file.
+	language (str): Language code for OCR (default is Dutch "nld").
 
-content = []
+	Returns:
+	str: Extracted text from the image.
+	"""
+	image = Image.open(path_to_image)
+	text = pytesseract.image_to_string(image, lang=language)
+	return text
 
-for index, filename in enumerate(filenames): # Go through files
-	f = os.path.join(directory, filename) # Get path to file
-	print(f) # Print File name
-	image = Image.open(f) # Open the image
-	text = pytesseract.image_to_string(image, lang='nld') # Perform OCR and save text
-	page = {
-		"page": index + 1,
-		"text": text
+def ocr_directory(path_to_images_directory, output_directory, language="nld"):
+	"""
+	Performs OCR on all images within a specified directory, storing results in a JSON file.
+
+	Parameters:
+	path_to_images_directory (str): Directory path containing image files for OCR.
+	output_directory (str): Directory path for saving the output JSON file.
+	language (str): Language code for OCR (default is Dutch "nld").
+
+	Output JSON:
+	{
+		"year": (int),
+		"content": [
+			{
+				"page": (int),
+				"text": (str)
+			},
+			{
+				"page": (int),
+				"text": (str)
+			}
+		]
 	}
-	content.append(page)
 
-data["content"] = content
-json_string = json.dumps(data, indent=4)
-outfile = open('text/1968.json', 'a+')
-outfile.write(json_string + '\n')
-outfile.close()
+	Example:
+    directory/
+        ├── path_to_images_directory/
+        │   └── image1.jpg
+
+    The output will be:
+    directory/
+        ├── path_to_images_directory/
+        │   └── image1.jpg
+        ├── text/
+        │   └── directory_text.json
+	"""
+	book_year = path_to_images_directory.split('/')[1]
+	data = {
+		"year": book_year,
+		"content": []
+	}
+
+	content = []
+
+	for page_number, filename in enumerate(os.listdir(path_to_images_directory)):
+		path_to_image = os.path.join(path_to_images_directory, filename)
+		text = ocr_page(path_to_image, language)
+		page_data = {
+			"page": page_number + 1,
+			"text": text
+		}
+		content.append(page_data)
+		print(f"Processed and saved: {filename}")
+	
+	data["content"] = content
+	json_string = json.dumps(data, indent=4)
+
+	output_directory_text = os.path.join(output_directory, 'text')
+	os.makedirs(output_directory_text, exist_ok=True)
+	output_filename = book_year + ".json"
+	output_file_path = os.path.join(output_directory_text, output_filename)
+	outfile = open(output_file_path, 'a+')
+	outfile.write(json_string + '\n')
+	outfile.close()
+
+# OCR a specific page and print the text
+path_to_image = "data/1854/images_improved/improved_1854_page_0008.jpg"
+print(ocr_page(path_to_image))
+
+# OCR all images in a directory
+path_to_images_directory = "data/1854/images_improved"
+output_directory = "data/1854"
+#ocr_directory(path_to_images_directory, output_directory)
