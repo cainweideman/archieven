@@ -26,7 +26,7 @@ import json
 
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
-def ocr_page(path_to_image, language="nld"):
+def ocr_page(path_to_image, language="nld", config="3"):
 	"""
 	Performs OCR on a single image and returns the extracted text.
 
@@ -38,10 +38,11 @@ def ocr_page(path_to_image, language="nld"):
 	str: Extracted text from the image.
 	"""
 	image = Image.open(path_to_image)
-	text = pytesseract.image_to_string(image, lang=language)
+	configuration = "--psm " + config
+	text = pytesseract.image_to_string(image, lang=language, config=configuration)
 	return text
 
-def ocr_directory(path_to_images_directory, output_directory, language="nld"):
+def ocr_directory(path_to_images_directory, output_directory, language="nld", config="3"):
 	"""
 	Performs OCR on all images within a specified directory, storing results in a JSON file.
 
@@ -87,7 +88,7 @@ def ocr_directory(path_to_images_directory, output_directory, language="nld"):
 
 	for page_number, filename in enumerate(os.listdir(path_to_images_directory)):
 		path_to_image = os.path.join(path_to_images_directory, filename)
-		text = ocr_page(path_to_image, language)
+		text = ocr_page(path_to_image, language, config)
 		page_data = {
 			"page": page_number + 1,
 			"text": text
@@ -106,9 +107,29 @@ def ocr_directory(path_to_images_directory, output_directory, language="nld"):
 	outfile.write(json_string + '\n')
 	outfile.close()
 
+# Set the configuration for Tesseract
+'''
+Page segmentation modes:
+  0    Orientation and script detection (OSD) only.
+  1    Automatic page segmentation with OSD.
+  2    Automatic page segmentation, but no OSD, or OCR.
+  3    Fully automatic page segmentation, but no OSD. (Default)
+  4    Assume a single column of text of variable sizes.
+  5    Assume a single uniform block of vertically aligned text.
+  6    Assume a single uniform block of text.
+  7    Treat the image as a single text line.
+  8    Treat the image as a single word.
+  9    Treat the image as a single word in a circle.
+ 10    Treat the image as a single character.
+ 11    Sparse text. Find as much text as possible in no particular order.
+ 12    Sparse text with OSD.
+ 13    Raw line. Treat the image as a single text line, bypassing hacks that are Tesseract-specific.
+'''
+config = "4"
+
 # OCR a specific page and print the text
-path_to_image = "data/1854/images_improved/improved_1854_page_0008.jpg"
-print(ocr_page(path_to_image))
+path_to_image = "data/1854/images_improved/improved_1854_page_0012.jpg"
+print(ocr_page(path_to_image, config=config))
 
 # OCR all images in a directory
 path_to_images_directory = "data/1854/images_improved"
