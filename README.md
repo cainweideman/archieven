@@ -33,9 +33,9 @@ Here’s a comprehensive guide to installing Anaconda on Windows, creating and m
 2. **Create a New Environment**:
    - To create a new environment with a specific Python version, use:
      ```bash
-     conda create -n myenv python=3.8
+     conda create -n myenv python=3.11
      ```
-     Replace `myenv` with the name you want for your environment, and `3.8` with your desired Python version.
+     Replace `myenv` with the name you want for your environment, and `3.11` with your desired Python version.
 
 3. **Confirm Environment Creation**:
    - You may be prompted to confirm package downloads. Type `y` and press Enter to proceed.
