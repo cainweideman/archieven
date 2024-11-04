@@ -431,7 +431,7 @@ The output JSON file is structured as follows:
 
 3. **Run the Script**: Execute the script from the terminal:
    ```bash
-   python ocr_script.py
+   python ocr.py
    ```
 
 This will process the specified images, applying OCR, and saving the results in structured JSON format for easy retrieval and analysis.
