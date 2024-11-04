@@ -80,6 +80,69 @@ Here’s a comprehensive guide to installing Anaconda on Windows, creating and m
 ---
 
 Your Anaconda installation and environment setup are now complete! You can now install additional packages and manage multiple environments for different projects.
+
+### Guide: Selecting a New Conda Environment in Spyder or Visual Studio Code
+
+Once you’ve created a new Conda environment, you can configure Spyder or Visual Studio Code to use it. Here’s how to select your new environment in both editors.
+
+---
+
+#### 1. Selecting a Conda Environment in Spyder
+
+1. **Launch Spyder**:
+   - If you haven't installed Spyder in your environment yet, you can do so by activating your environment in the Anaconda Prompt and running:
+     ```bash
+     conda install spyder
+     ```
+   - After installation, launch Spyder from this environment using:
+     ```bash
+     spyder
+     ```
+
+2. **Set the Python Interpreter**:
+   - In Spyder, go to **Tools > Preferences**.
+   - Select **Python Interpreter** from the sidebar.
+   - Choose **Use the following Python interpreter** and click **Browse**.
+   - Navigate to your environment’s `python.exe` file:
+     - Typically located at: `C:\Users\YourUsername\anaconda3\envs\your_env_name\python.exe`
+   - Click **Apply** and **OK**.
+
+3. **Restart Spyder**:
+   - Restart Spyder for the changes to take effect. It will now use the selected environment.
+
+---
+
+#### 2. Selecting a Conda Environment in Visual Studio Code
+
+1. **Open Visual Studio Code**.
+
+2. **Install the Python Extension**:
+   - If you haven’t installed it already, go to the **Extensions** sidebar and search for **Python** by Microsoft.
+   - Click **Install**.
+
+3. **Select the Interpreter**:
+   - Press **Ctrl + Shift + P** (or **Cmd + Shift + P** on macOS) to open the command palette.
+   - Type **Python: Select Interpreter** and select it.
+   - VS Code will show a list of available Python interpreters, including Conda environments.
+   - Choose the interpreter associated with your environment, which should look something like this:
+     ```plaintext
+     (your_env_name) C:\Users\YourUsername\anaconda3\envs\your_env_name\python.exe
+     ```
+
+4. **Verify Environment**:
+   - Open a terminal within VS Code (**View > Terminal**) to ensure that the selected environment is active.
+   - You can confirm by running:
+     ```bash
+     python --version
+     ```
+   - It should show the Python version specific to your selected environment.
+
+5. **Install Packages**:
+   - If you need to install any packages within this environment, you can activate the terminal with the selected environment and use Conda or pip to install as needed.
+
+---
+
+Now, you can seamlessly use your Conda environment in Spyder or VS Code!
  
  <br />
  <br />
