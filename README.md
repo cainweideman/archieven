@@ -80,10 +80,11 @@ Here’s a comprehensive guide to installing Anaconda on Windows, creating and m
 ---
 
 Your Anaconda installation and environment setup are now complete! You can now install additional packages and manage multiple environments for different projects.
+
 \
 \
 \
-\
+
 ### Installing Pytesseract with Tesseract OCR on Windows
 
 Here’s a step-by-step guide to install Pytesseract and set up Tesseract OCR with additional language support for Dutch (Flemish).
@@ -135,10 +136,11 @@ pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesserac
 ---
 
 Your Pytesseract setup is now complete! You’re ready to use Tesseract OCR in Python for text extraction from images, with support for Dutch and Flemish if you selected it during installation.
+
 \
 \
 \
-\
+
 ### Guide: Using the Image Processing Script
 
 This guide explains how to use the image processing script provided. This script processes images within a specified directory structure by converting them to grayscale, binarizing (black and white), cropping them, and saving the processed images to a designated subfolder.
