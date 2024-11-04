@@ -331,17 +331,12 @@ This guide walks you through setting up and using the OCR Processing Script to p
 ---
 
 #### Prerequisites
-- **Tesseract OCR**: Download and install Tesseract OCR.
-    - Windows users: You can get the installer from [this link](https://github.com/UB-Mannheim/tesseract/wiki).
-    - Add Tesseract to your PATH:
-      - **Open** `Edit System Environment Variables` > **Environment Variables**.
-      - In **User Variables**, find `Path`, click **Edit** > **New**, and add:
-        ```
-        C:\Program Files\Tesseract-OCR
-        ```
+- **Tesseract OCR**: Download and install Tesseract OCR as mentioned above.
+
 - **Python Packages**: Install required packages (`pytesseract`, `Pillow`, `os`, and `json`).
 
 To install packages:
+If pytesseract is not installed yet:
 ```bash
 conda install -c conda-forge pytesseract
 ```
