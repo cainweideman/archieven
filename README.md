@@ -81,6 +81,10 @@ Here’s a comprehensive guide to installing Anaconda on Windows, creating and m
 
 Your Anaconda installation and environment setup are now complete! You can now install additional packages and manage multiple environments for different projects.
 
+<br />
+<br />
+<br />
+
 ### Guide: Selecting a New Conda Environment in Spyder or Visual Studio Code
 
 Once you’ve created a new Conda environment, you can configure Spyder or Visual Studio Code to use it. Here’s how to select your new environment in both editors.
