@@ -315,3 +315,119 @@ process_images_in_directory(root_directory, threshold, crop_fraction)
 ---
 
 By following these steps, you can effectively use the script to process your images for grayscale conversion, binarization, cropping, and saving in a well-organized folder structure.
+
+<br />
+<br />
+<br />
+
+### Guide: Using the OCR Processing Script
+
+This guide walks you through setting up and using the OCR Processing Script to perform OCR on images in a specified directory. The script extracts text from images and saves the results in a structured JSON file.
+
+---
+
+#### Prerequisites
+- **Tesseract OCR**: Download and install Tesseract OCR.
+    - Windows users: You can get the installer from [this link](https://github.com/UB-Mannheim/tesseract/wiki).
+    - Add Tesseract to your PATH:
+      - **Open** `Edit System Environment Variables` > **Environment Variables**.
+      - In **User Variables**, find `Path`, click **Edit** > **New**, and add:
+        ```
+        C:\Program Files\Tesseract-OCR
+        ```
+- **Python Packages**: Install required packages (`pytesseract`, `Pillow`, `os`, and `json`).
+
+To install packages:
+```bash
+conda install -c conda-forge pytesseract
+```
+
+```bash
+conda install pillow
+```
+
+---
+
+### Using the Script
+
+The script contains two main functions:
+
+#### 1. **Perform OCR on a Single Image**: `ocr_page`
+
+This function reads a single image, performs OCR, and returns the text as a string.
+
+**Example Usage**:
+   ```python
+   path_to_image = "data/1854/images_improved/improved_1854_page_0012.jpg"
+   print(ocr_page(path_to_image, config="4"))
+   ```
+
+- **Parameters**:
+  - `path_to_image`: File path of the image to be processed.
+  - `language`: Language code (default: `"nld"` for Dutch).
+  - `config`: Page segmentation mode (default: `"3"`; see segmentation mode options in the script).
+
+#### 2. **Perform OCR on All Images in a Directory**: `ocr_directory`
+
+This function processes all images in a specified directory, extracting text and saving it in a JSON file.
+
+**Example Usage**:
+   ```python
+   path_to_images_directory = "data/1854/images_improved"
+   output_directory = "data/1854"
+   ocr_directory(path_to_images_directory, output_directory, config="4")
+   ```
+
+- **Parameters**:
+  - `path_to_images_directory`: Path to the folder containing the images.
+  - `output_directory`: Path to the folder where the JSON output will be saved.
+  - `language`: Language code for OCR (default: `"nld"`).
+  - `config`: Page segmentation mode.
+
+**Output Format**:
+The output JSON file is structured as follows:
+```json
+{
+    "year": "1854",
+    "content": [
+        {"page": 1, "text": "Extracted text for page 1..."},
+        {"page": 2, "text": "Extracted text for page 2..."},
+        ...
+    ]
+}
+```
+- The JSON file is saved in an `output_directory/text` subfolder, with the filename set to the year extracted from `path_to_images_directory` (e.g., `1854.json`).
+
+---
+
+### Configuration Options
+
+**Page Segmentation Modes**:
+- The default mode (`config="3"`) is suitable for full-page text recognition.
+- For single columns, text blocks, or custom needs, adjust the `config` parameter according to the list in the script (e.g., `"4"` for single-column text).
+
+---
+
+### Running the Script
+
+1. **OCR a Specific Image**:
+   Uncomment and customize the following code in the script:
+   ```python
+   path_to_image = "data/1854/images_improved/improved_1854_page_0012.jpg"
+   print(ocr_page(path_to_image, config="4"))
+   ```
+
+2. **OCR All Images in a Directory**:
+   Uncomment and set up:
+   ```python
+   path_to_images_directory = "data/1854/images_improved"
+   output_directory = "data/1854"
+   ocr_directory(path_to_images_directory, output_directory, config="4")
+   ```
+
+3. **Run the Script**: Execute the script from the terminal:
+   ```bash
+   python ocr_script.py
+   ```
+
+This will process the specified images, applying OCR, and saving the results in structured JSON format for easy retrieval and analysis.
