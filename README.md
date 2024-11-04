@@ -81,6 +81,9 @@ Here’s a comprehensive guide to installing Anaconda on Windows, creating and m
 
 Your Anaconda installation and environment setup are now complete! You can now install additional packages and manage multiple environments for different projects.
 
+
+
+
 ### Installing Pytesseract with Tesseract OCR on Windows
 
 Here’s a step-by-step guide to install Pytesseract and set up Tesseract OCR with additional language support for Dutch (Flemish).
