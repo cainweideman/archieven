@@ -129,9 +129,9 @@ config = "4"
 
 # OCR a specific page and print the text
 path_to_image = "data/1854/images_improved/improved_1854_page_0012.jpg"
-print(ocr_page(path_to_image, config=config))
+#print(ocr_page(path_to_image, config=config))
 
 # OCR all images in a directory
 path_to_images_directory = "data/1854/images_improved"
 output_directory = "data/1854"
-#ocr_directory(path_to_images_directory, output_directory)
+ocr_directory(path_to_images_directory, output_directory, config=config)
