@@ -72,53 +72,10 @@ def only_letters(text):
 	return regex.sub('', text)
 
 
-def get_job_list(text_list):
-    """
-    Extracts potential job titles from a list of text lines based on specific criteria.
-
-    A job title is considered valid if:
-    - It starts with at least four uppercase characters.
-    - It ends with at least three uppercase characters.
-    - The line does not contain any digits.
-    - The line length is greater than three characters (to filter out short words).
-
-    Args:
-        text_list (list): List of text lines.
-
-    Returns:
-        list: List of detected job titles that meet the criteria.
-    """
-    # Using list comprehension for more concise and efficient filtering
-    job_list = [
-        line for line in text_list
-        if len(line) > 3  # Minimum length check
-        and not any(chr.isdigit() for chr in line) # Ensures there are no digits
-        and line.replace(' ', '')[:4].isupper()  # Checks if the first four characters are uppercase
-        and line.replace(' ', '')[-3:].isupper()  # Checks if the last three characters are uppercase
-    ]
-    return job_list
-
-
-def extract_lines(text):
-    """
-    Splits the text into sections based on job titles.
-
-    Args:
-        text (str): The input text.
-
-    Returns:
-        dict: A dictionary where the key is the job title and the value is the list of lines associated with it.
-    """
-    text_list = text.replace('\n\n', '\n').split('\n')
-    job_list = get_job_list(text_list)
-    index_list = [text_list.index(job) for job in job_list]
-    job_dict = {}
-
-    for i, first_index in enumerate(index_list):
-        last_index = index_list[i + 1] if i < len(index_list) - 1 else len(text_list)
-        job_dict[text_list[first_index]] = text_list[first_index + 1:last_index]
-
-    return job_dict
+def remove_prepositions(sentence):
+	prepositions_list = ['van', 'de', 'der', 'den', 'ter', 'ten', 'vander', 'v.', 'd', 'v', 'd.']
+	sentence = [part for part in sentence if part not in prepositions_list]
+	return sentence
 
 
 def add_spaces(sentence):
@@ -137,31 +94,14 @@ def add_spaces(sentence):
     return sentence
 
 
-def find_preposition(name_list, address_list):
-    """
-    Separates name prepositions (like 'van', 'de') from the address list.
-
-    Args:
-        name_list (list): List of name components.
-        address_list (list): List of address components.
-
-    Returns:
-        tuple: Updated name list and address list.
-    """
-    prepositions = {'van', 'de', 'der', 'den', 'ter', 'ten', 'vander'}
-    address_list = [item.replace(',', '') for item in address_list]
-
-    for prep in prepositions:
-        if prep in address_list:
-            name_list.append(prep)
-            address_list.remove(prep)
-
-    return name_list, address_list
+def add_initial_dots(sentence):
+	sentence = [string + "." if len(string) == 1 else string for string in sentence]
+	return sentence
 
 
 def split_on_initials(sentence):
-	sentence = add_spaces(sentence)
-	parts = sentence.split()
+	sentence_list = sentence.split()
+	parts = sentence.split()[:4]
 
 	initials_pattern = re.compile(r'^[A-Z](?:[.,])$')
 
@@ -192,16 +132,36 @@ def split_on_initials(sentence):
 
 	name = parts[:final_initial_position + 1]
 	address = parts[final_initial_position + 1:]
+	rest = [i for i in sentence_list if i not in name]
 
-	return name, address
+
+	return name, rest
+
+
+def split_job_and_street(sentence):
+	sentence_list = sentence.split(',')
+	if len(sentence_list) > 2:
+		job = [sentence_list[0]]
+		address = [i for i in sentence_list if i not in job]
+	else:
+		job = ''
+		address = sentence_list
 	
+	return job, address
+
+def extract_prepositions(sentence):
+	sentence_list = sentence.split()
+	prepositions_list = ['van', 'de', 'der', 'den', 'ter', 'ten', 'vander', 'v.', 'd', 'v', 'd.']
+	prepositions = [part for part in sentence_list if part in prepositions_list]
+	return prepositions
+
 
 def format_name(name_list):
 	prepositions_list = ['van', 'de', 'der', 'den', 'ter', 'ten', 'vander', 'v.', 'd', 'v', 'd.']
 
 	initials = [part for part in name_list if re.match(r"^[A-Z]\.$", part)]
 	prepositions = [part for part in name_list if part.lower() in prepositions_list]
-	rest = [only_letters(part) for part in name_list if part not in initials and part not in prepositions]
+	rest = [part for part in name_list if part not in initials and part not in prepositions]
 	full_name_list = initials + prepositions + rest
 
 	return ' '.join(full_name_list)
@@ -228,34 +188,31 @@ def make_json_object(name, job, address):
     }
 
 
-def extract_people(job_dict):
-	"""
-	Extracts people information from the job dictionary and prints a JSON object for each person.
-
-	Args:
-		job_dict (dict): Dictionary of job titles and associated lines of text.
-	"""
-	for job, lines in job_dict.items():
-		for line in lines:
-			name, address = split_on_initials(line)
-			if len(name) > 1 and address:
-				if any(char.isdigit() for char in ' '.join(address)):
-					complete_name = format_name(name)
-					formatted_job = job[0].upper() + job[1:].lower().rstrip('.')
-					formatted_address = ' '.join(address).rstrip('.')
-					person = make_json_object(complete_name, formatted_job, formatted_address)
-					print(json.dumps(person, indent=2))
-					json_list.append(person)
-
-
 # Main execution
-path_to_json = 'data/1865/text/1865.json'
+path_to_json = 'data/1880/text/1880.json'
 data = open_json(path_to_json)
 json_list = []
 
 if data:
-	text = get_text(data, first_page=7, last_page=135)
+	text = get_text(data, first_page=34, last_page=151)
 	text = strip_text(text)
-	job_dict = extract_lines(text)
-	extract_people(job_dict)
-	print(f'Amount of people extracted: {len(json_list)}')
+	text = text.replace('\n\n', '\n')
+	text_list = text.split('\n')
+
+	for line in text_list:
+		line_list = line.split(' ')
+		line_list = remove_prepositions(line_list)
+		sentence = " ".join(line_list)
+		sentence = add_spaces(sentence)
+		sentence = " ".join(add_initial_dots(sentence.split(' ')))
+		name, rest = split_on_initials(sentence)
+		prepositions = extract_prepositions(line)
+		name = name + prepositions
+		name = format_name(name)
+		job, address = split_job_and_street(' '.join(rest))
+		if len(name) >=1 and len(address) >= 1:
+			person = make_json_object(name, ' '.join(job), ' '.join(address).strip().rstrip('.').strip())
+			print(json.dumps(person, indent=2))
+			json_list.append(person)
+
+print(f'Amount of people extracted: {len(json_list)}')
