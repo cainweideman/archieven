@@ -23,6 +23,7 @@ import pytesseract
 from PIL import Image
 import os
 import json
+from tqdm import tqdm
 
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
@@ -86,7 +87,7 @@ def ocr_directory(path_to_images_directory, output_directory, language="nld", co
 
 	content = []
 
-	for page_number, filename in enumerate(os.listdir(path_to_images_directory)):
+	for page_number, filename in tqdm(enumerate(os.listdir(path_to_images_directory)), total=len(os.listdir(path_to_images_directory)), ncols=100, desc="OCRing Images", unit="image"):
 		path_to_image = os.path.join(path_to_images_directory, filename)
 		text = ocr_page(path_to_image, language, config)
 		page_data = {
@@ -94,7 +95,6 @@ def ocr_directory(path_to_images_directory, output_directory, language="nld", co
 			"text": text
 		}
 		content.append(page_data)
-		print(f"Processed and saved: {filename}")
 	
 	data["content"] = content
 	json_string = json.dumps(data, indent=4)
@@ -125,13 +125,13 @@ Page segmentation modes:
  12    Sparse text with OSD.
  13    Raw line. Treat the image as a single text line, bypassing hacks that are Tesseract-specific.
 '''
-config = "4"
+config = "3"
 
 # OCR a specific page and print the text
-path_to_image = "data/1854/images_improved/improved_1854_page_0012.jpg"
+path_to_image = "data/1911/images_improved/improved_1911_page_0106.jpg"
 #print(ocr_page(path_to_image, config=config))
 
 # OCR all images in a directory
-path_to_images_directory = "data/1854/images_improved"
-output_directory = "data/1854"
+path_to_images_directory = "data/1920/images_improved"
+output_directory = "data/1920"
 ocr_directory(path_to_images_directory, output_directory, config=config)

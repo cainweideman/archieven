@@ -186,16 +186,16 @@ def process_directory(path_to_directory, threshold=160, crop_fraction=0):
 		print(f"Processed and saved: {output_file_path}")
        
 
-threshold = 160
-crop_fraction = 0.05
+threshold = 153
+crop_fraction = 0.02
 
 # Process one image
-path_to_image = "data/1854/images/1854_page_0008.jpg"
+path_to_image = "data/1854/images/1854_page_0043.jpg"
 #process_image(path_to_image, threshold, crop_fraction)
 
 # Process images in one directory
-path_to_directory = "data/1854"
-process_directory(path_to_directory)
+path_to_directory = "data/1930"
+process_directory(path_to_directory, threshold, crop_fraction)
 
 # Process images in all directories
 root_directory = "data"

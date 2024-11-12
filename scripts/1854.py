@@ -246,8 +246,15 @@ data = open_json(path_to_json)
 json_list = []
 
 if data:
-    text = get_text(data, first_page=7, last_page=102)
-    text = strip_text(text)
-    job_dict = extract_lines(text)
-    extract_people(job_dict)
-    print(f'Amount of people extracted: {len(json_list)}')
+	text = get_text(data, first_page=7, last_page=102)
+	text = strip_text(text)
+	job_dict = extract_lines(text)
+	extract_people(job_dict)
+	print(f'Amount of people extracted: {len(json_list)}')
+	register = {
+					'year': 1854,
+					'register': json_list
+				}
+	json_object = json.dumps(register, indent=4)
+	f = open('1854.json', 'w')
+	f.write(json_object)
