@@ -175,7 +175,7 @@ def process_directory(path_to_directory, threshold=160, crop_fraction=0):
 	output_directory = os.path.join(path_to_directory, 'images_improved')
 	os.makedirs(output_directory, exist_ok=True)
 
-	for image_name in tqdm(os.listdir(path_to_images), total=len(os.listdir(path_to_images)), unit=image, desc="Binarizing Images", ncols=100):
+	for image_name in tqdm(os.listdir(path_to_images), total=len(os.listdir(path_to_images)), unit="image", desc="Binarizing Images", ncols=100):
 		path_to_image = os.path.join(path_to_images, image_name)
 		image = cv2.imread(path_to_image)
 		gray_image = grayscale(image)
@@ -187,15 +187,15 @@ def process_directory(path_to_directory, threshold=160, crop_fraction=0):
 		#print(f"Processed and saved: {output_file_path}")
        
 
-threshold = 153
-crop_fraction = 0.02
+threshold = 158
+crop_fraction = 0.025
 
 # Process one image
 path_to_image = "data/1854/images/1854_page_0043.jpg"
 #process_image(path_to_image, threshold, crop_fraction)
 
 # Process images in one directory
-path_to_directory = "data/1930"
+path_to_directory = "data/1931"
 process_directory(path_to_directory, threshold, crop_fraction)
 
 # Process images in all directories
