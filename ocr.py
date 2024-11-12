@@ -80,6 +80,7 @@ def ocr_directory(path_to_images_directory, output_directory, language="nld", co
         │   └── directory_text.json
 	"""
 	book_year = path_to_images_directory.split('/')[1]
+	print(f'Performing OCR for {path_to_images_directory}')
 	data = {
 		"year": book_year,
 		"content": []
@@ -132,6 +133,6 @@ path_to_image = "data/1911/images_improved/improved_1911_page_0106.jpg"
 #print(ocr_page(path_to_image, config=config))
 
 # OCR all images in a directory
-path_to_images_directory = "data/1920/images_improved"
-output_directory = "data/1920"
+path_to_images_directory = "data/1922/images_improved"
+output_directory = "data/1922"
 ocr_directory(path_to_images_directory, output_directory, config=config)
