@@ -23,6 +23,7 @@ Functions:
 
 import cv2
 import os
+from tqdm import tqdm
 
 def grayscale(image):
     """
@@ -174,7 +175,7 @@ def process_directory(path_to_directory, threshold=160, crop_fraction=0):
 	output_directory = os.path.join(path_to_directory, 'images_improved')
 	os.makedirs(output_directory, exist_ok=True)
 
-	for image_name in os.listdir(path_to_images):
+	for image_name in tqdm(os.listdir(path_to_images), total=len(os.listdir(path_to_images)), unit=image, desc="Binarizing Images", ncols=100):
 		path_to_image = os.path.join(path_to_images, image_name)
 		image = cv2.imread(path_to_image)
 		gray_image = grayscale(image)
@@ -183,7 +184,7 @@ def process_directory(path_to_directory, threshold=160, crop_fraction=0):
 			
 		output_file_path = os.path.join(output_directory, f"improved_{image_name}")
 		cv2.imwrite(output_file_path, cropped_image)
-		print(f"Processed and saved: {output_file_path}")
+		#print(f"Processed and saved: {output_file_path}")
        
 
 threshold = 153
