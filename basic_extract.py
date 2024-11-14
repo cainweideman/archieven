@@ -1,5 +1,6 @@
 import json
 import re
+from tqdm import tqdm
 
 
 def load_json(path_to_json):
@@ -51,7 +52,7 @@ def check_for_person(sentence):
         return False
 
 
-def make_json_object(name, job, address):
+def make_person(name, job, address):
     """
     Creates a JSON object for a person.
 
@@ -105,30 +106,38 @@ def process_sentences(sentences):
 	
 	return processed_sentences
 
-path_to_json = "book_text/1927.json"
+year = "1900"
+path_to_json = f"book_text/{year}.json"
 
 data = load_json(path_to_json)
+first_page, last_page = 7, 248
 
 if data:
-	last_line = ""
-	text_list = get_text(data, 125, 610)
-	for page in text_list:
+	person_list = []
+	text_list = get_text(data, first_page, last_page)
+	for index, page in tqdm(enumerate(text_list), total=len(text_list), ncols=100, unit='page', desc='Processing Pages'):
+		print(f'Page: {first_page + index}')
 		text = page.replace('\n\n', '\n')
 		line_list = text.split('\n')
 		complete_lines = process_sentences(remove_junk(line_list))
 		complete_lines = [line.strip() for line in complete_lines]
 		for line in complete_lines:
-			print(line)
+			#print(line)
 			parts = line.split(',')
+			#print(parts)
 			#parts = [part for part in parts if len(parts) > 1]
 			#print(parts)
 			if len(parts) > 1:
 				name = parts[0]
 				if len(parts) == 2:
 					job = "None"
-					adress = parts[1]			
+					address = parts[1]			
 				elif len(parts) > 2:
 					job = parts[1]
 					address = parts[2:]
-				print(f'name: {name}, job: {job}, address: {address}')
-				print('\n')
+				person = make_person(name, job, address)
+				print(person)
+				person_list.append(person)
+		print('\n')
+	
+	print(f'Amount of people extracted: {len(person_list)}')
