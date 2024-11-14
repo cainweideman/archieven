@@ -106,6 +106,7 @@ def complete_lines(sentences):
 
 
 path_to_json = "book_text/1927.json"
+
 data = load_json(path_to_json)
 
 if data:
