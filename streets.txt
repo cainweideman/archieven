@@ -1,0 +1,455 @@
+Hoge der A
+Kleine der A
+Lage der A
+Academieplein
+Achter de Muur
+Achterweg
+Aduardersteeg
+Agricolastraat
+Akerkhof
+Akerkhof noordzijde
+Akerkhof zuidzijde
+Akerkstraat
+Akermagang
+Annastraat
+Grote Appelstraat
+Kleine Appelstraat
+Nieuwe Astraat
+Kleine Astraat
+Baanstraat
+Ooster Badstraat
+Wester Badstraat
+Kleine Badstraat
+Barakken
+Baresteeg
+Battengang
+Bergstraat
+Kleine Bergstraat
+Bessemoersteeg
+Bleekersgang
+Bleekerslaan
+Bleekersteeg
+Bleekerstraat
+Bloemstraat
+Bloemstraat noordzijde
+Bloemstraat zuidzijde
+Bocht van Gunea
+Boterdiep
+Binnen Boterdiep
+Buiten Boterdiep
+Nieuwe Boteringestraat
+Nieuwe Boteringestraat oostzijde
+Nieuwe Boteringestraat westzijde
+Oude Boteringestraat
+Oude Boteringestraat oostzijde
+Oude Boteringestraat westzijde
+Bouwmanstraat
+Brandenburgersteeg
+Breedegang
+De Brink
+Broerstraat
+Brouwersgang
+Brugstraat
+Brugstraat noordzijde
+Brugstraat zuidzijde
+Bruine Ruiterstraat
+Buiten Kleinpoortje
+Burengang
+Burgtstraat
+Grote Butjesstraat
+Kleine Butjesstraat
+Carolieweg
+Coehoornsingel
+Coehoornstraat
+Cubasteeg
+Cubadwarsstraat
+Damsterdiep
+Binnen Damsterdiep noordzijde
+Binnen Damsterdiep zuidzijde
+Buiten Damsterdiep noordzijde
+Buiten Damsterdiep zuidzijde
+Damsterkade
+Davidsteeg
+Dolhuisgang
+Donkersgang
+Drentsche Laan
+Driehovensteeg
+Driemolendrift
+Eerste Drift
+Tweede Drift
+Vierde Drift
+Vijfde Drift
+Dwarsstraat
+Duikerstraat
+Dijkstraat
+Nieuwe Ebbingestraat
+Nieuwe Ebbingestraat oostzijde
+Nieuwe Ebbingestraat westzijde
+Oude Ebbingestraat
+Oude Ebbingestraat oostzijde
+Oude Ebbingestraat westzijde
+Verlengde Ebbingestraat
+Eelderstraat
+Eemskanaal
+Egijptengang
+Ekkelboomengang
+Emmaplein
+Ubbo Emmiussingel
+Fivelstraat
+Folkingestraat oostzijde
+Folkingestraat westzijde
+Folkingedwarsstraat
+Frederikstraat
+Frieschestraatweg
+Ganzevoortsingel
+Gardepoort
+Gasthuisstraatje
+Geestelijke Maagdenstraat
+Gelkingestraat
+Kleine Gelkingestraat
+Jan Gouverneurstraat
+Grachtstraat
+Kleine Grachtstraat
+Griffestraat
+Grootegang
+Grote Markt
+Guichardsgang
+Guldenstraat
+Guyotplein
+Haaksgang
+Haddingestraat
+Kleine Haddingestraat
+Halfwegsmolen
+Hanebijtersgang
+Hardewikerstraat
+Havenstraat
+Heerebinnensingel
+Heereplein oostzijde
+Heereplein westzijde
+Heerepoortenmolendrift
+Heeresingel
+Heerestraat
+Heerestraat oostzijde
+Heerestraat westzijde
+Verlengde Heerestraat
+Verlengde Heerestraat oostzijde
+Verlengde Heerestraat westzijde
+Heereweg
+Heereweg oostzijde
+Heereweg westzijde
+Hoek van Ameland
+Hoekstraat
+Hoendiep
+Eerste en Tweede Hoendiepstraat
+Hofstraat
+Hoofdstraatje
+' Hooft
+Hoogstraatje
+Hoornschediep
+Hoornschedijk
+Hopmansgang
+Hornstraat
+Houtstraat
+Houtzagerssteeg
+Hovenstraat
+Eerste en Tweede Hunzestraat
+Ipemolendrift
+Jacobsstraat
+Jacobijnerstraat
+Jacobijnerweg
+Sint Jansstraat
+Nieuwe Sint Jansstraat
+Jobsgang
+Jodenstraatje
+Jodendrift
+Jonkerstraat
+Van Julsinghastraat
+Kanaalstraat
+Gedempte Kattendiep
+Gedempte Kattendiep noordzijde
+Gedempte Kattendiep zuidzijde
+Kattenhage
+Kattenhage oostzijde
+Kattenhage westzijde
+Keereweer
+Kerklaan
+Noorder Kerkstraat
+Zuider Kerkstraat
+Kleinegang
+Klooster
+Kleine Klooster
+Kolfstraat
+Koningsgang
+Koningsgang
+Koningsgang
+Korenstraat
+Korenbrandersgang
+Korfmakersgang
+Korreweg
+Kostersgang
+Grote Koude Gat
+Kleine Koude Gat
+Kraneweg
+Kreupelstraatje
+De Krimp
+Grote Kromelleboog
+Grote Kromelleboog noordzijde
+Grote Kromelleboog zuidzijde
+Kleine Kromelleboog
+Grote Kruisstraat
+Kleine Kruisstraat
+Kruithuisgang
+Kuipersplaats
+Kwinkenplaats
+Nieuwe Kijk in' Jatstraat
+Nieuwe Kijk in' Jatstraat oostzijde
+Nieuwe Kijk in' Jatstraat westzijde
+Oude Kijk in' Jatstraat
+Oude Kijk in' Jatstraat oostzijde
+Oude Kijk in' Jatstraat westzijde
+Kruitgracht
+Kruitlaan
+De Laan
+Lamhuiningestraat
+Langesteeg
+Leeuwarderdwarsstraat
+Leeuwarderstraat
+Grote Leliestraat
+Kleine Leliestraat
+Lissabonsteeg
+Lodewijkstraat
+Verlengde Lodewijkstraat
+Lopendediep
+Loppersumergang
+Lutkenieuwstraat
+Lijnbaanstraat
+Mangelgang
+Markusgang
+Marktstraat
+Martenstraat
+Martinikerkhof
+Martinikerkhof oostzijde
+Martinikerkhof westzijde
+Marwixstraat
+Mauritsdwarsstraat
+Mauritsstraat
+Meeuwerderweg
+Meeuwerderweg oostzijde
+Meeuwerderweg westzijde
+Melkweg
+Middenstraat
+Moeskersgang
+Moesstraat
+Moesstraat oostzijde
+Moesstraat westzijde
+Molendrift
+Molenstraat
+Kleine Molenstraat
+Mottenberg
+Munnekeholm
+Musschengang
+Muurstraat
+Netelbosje
+Nieuwe Bosch
+Nieuwekerkhof
+Nieuweweg
+Nieuwstraat
+Nieuwstad
+Noorderbinnensingel
+Noorderdwarsstraat
+Noorderhaven
+Noorderhaven noordzijde
+Noorderhaven zuidzijde
+Noorderhoogebrug
+Noorderkerkstraat
+Noorderkuipen
+Noorderstationsstraat
+Noorderwalhof
+Noorderwillemskanaal
+Noordwillemskanaal oostzijde
+Noordwillemskanaal westzijde
+Olieslagerssteeg
+Oliemolensteeg
+Oliemulderstraat
+Oosterbadstraat
+Oosterhaven
+Oosterbinnensingel
+Oosterhavenstraat
+Oostersingel
+Oosterstraat
+Oosterstraat oostzijde
+Oosterstraat westzijde
+Nieuwe Oosterstraat
+Oosterweg
+Ossemarkt
+Ossemarkt oostzijde
+Ossemarkt westzijde
+Oudebosch
+Oudeweg
+Paddepoel
+Paddepoelsterweg
+Papengang
+Papiermolen
+Parklaan
+Pausgang
+Peizerweg
+Pelsterstraat
+Kleine Pelsterstraat
+Peperstraat
+Kleine Peperstraat
+Perkamentmakerssteeg
+Plantsoenstraat
+Pluimersgang
+Poelestraat
+Poelestraat noordzijde
+Poelestraat zuidzijde
+Polderstraat
+Pompstraat
+Pontjesstraat
+Popkenstraat
+Poststraat
+Pot en Pannengang
+Pottenbakkersrijge
+Praediniussingel
+Prinsenstraat
+Pijpstraat
+Raamsteeg
+Grote Raamstraat
+Kleine Raamstraat
+Rabenhauptstraat
+Radebinnensingel
+Rademarkt
+Radesingel
+Reitdiepskade
+Reitdijk
+Reitdijk noordzijde
+Reitdijk zuidzijde
+Reitemakersrijge
+Roodeweeshuisstraat
+Grote Rozenstraat
+Kleine Rozenstraat
+Rotterdammerstraatje
+Ruiterstraatje
+Rijskampen(straat)
+Scheepstimmerwerf
+Schoolholm
+Schoolstraat
+Schuitendiep
+Schuitendiep oostzijde
+Schuitendiep westzijde
+Schuitemakerstraat
+Selwerderdwarsstraat
+Selwerderstraat
+Selwerderdiep
+Singel
+Singelweg
+Singelweg
+Singelstraat
+Sledemennerstraat
+Bij de Sluis
+Sluiskade
+Sluisstraat
+Slijkgat
+Smakkersgang
+Snikkevaardersgang
+Snor
+Soephuisstraatje
+Soepstraat
+Sophiastraat
+Kleine Sophiastraat
+Soniusgang
+Spekkopersgang
+Speldemakersgang
+Spilsluizen
+Spilsluizen noordzijde
+Spilsluizen zuidzijde
+Spinhuisstraat
+Spoormakersgang
+Spoorstraat
+Stalstraatje
+Zuider Stationsstraat
+Stationsweg
+Steenhouwerskade
+Steentilkade
+Steentilstraat
+Kleine Steentilstraat
+Stoeldraaierstraat
+Stoeldraaiersstraat oostzijde
+Stoeldraaiersstraat westzijde
+Studentenpad
+Taksteeg
+Tingtangstraatje
+Torenstraat
+Trompstraat
+Trouwarbeidersgang
+Tuinstraat
+Turfsingel
+Turfstraat
+Turftorenstraat
+Tusschen beide Markten
+Tusschen beide Markten noordzijde
+Tusschen beide Markten zuidzijde
+Uurwerkersgang
+Veemarktstraat
+Verversgang
+Veulsgang
+Violenstraat
+Violetsteeg
+Visbanken
+Visserstraat
+Kleine Visserstraat
+Nieuwe Visserstraat
+Verlengde  Visserstraat
+Vishoek
+Vismarkt
+Vismarkt noordzijde
+Vismarkt zuidzijde
+Vlasstraat
+Vosgang
+Vuilegang
+Vuilnisstoep
+Waagstraat
+Sint Walburgstraat
+Sint Walburgstraat oostzijde
+Sint Walburgstraat westzijde
+Walstraat
+Warmoesstraat
+Werkmansstraat
+Westerbadstraat
+Westerbinnensingel
+Westerhaven
+Westerhavenstraat
+Westerkade
+Westersingel oostzijde
+Westersingel westzijde
+Weversgang
+Willemstraat
+Verlengde Willemstraat
+Binnen Winschoterdiep
+Binnen Winschoterdiep oostzijde
+Binnen Winschoterdiep westzijde
+Buiten Winschoterdiep
+Buiten Winschoterdiep oostzijde
+Buiten Winschoterdiep westzijde
+Winschoterkade
+Winschoterstraat
+Wipstraat
+Witlattensteeg
+' Woertje
+IJpenmolendrift
+Zeijlsgang
+Zoutstraat
+Zuiderbinnensingel
+Zuidersingel
+Zuidersingelstraat
+Gedempte Zuiderdiep
+Gedempte Zuiderdiep noordzijde
+Gedempte  Zuiderdiep zuidzijde
+Zuiderhaven
+Zuiderkerkstraat
+Zuiderpark
+Zuiderkuipen
+Zuidersingel
+Zwaantjesgang
+Zwanestraat
+Zwarteweg
