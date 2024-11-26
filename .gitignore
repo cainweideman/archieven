@@ -3,6 +3,11 @@
 /text
 test.py
 /book_text
+<<<<<<< HEAD
 /model
 model.py
 llm.py
+=======
+test.txt
+>>>>>>> 8ddf7f3438480f2ce29636dbb50bedccba3e7a57
+/prompt.txt

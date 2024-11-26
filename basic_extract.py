@@ -82,6 +82,156 @@ def remove_junk(line_list):
 	return new_line_list
 
 
+def dot_initials(string):
+	return re.sub(r'(?<=[A-Z])(?!\.)\b', '.', add_spaces(string))
+
+
+def add_spaces(sentence):
+    """
+    Adds spaces after periods if missing.
+
+    Args:
+        sentence (str): The input sentence.
+
+    Returns:
+        str: Formatted sentence with proper spacing.
+    """
+    sentence = re.sub(r'(?<=[.])(?=[^\s])', r' ', sentence)
+    sentence = re.sub(r'\s+', ' ', sentence)
+    
+    return sentence
+
+
+def strip_text(text):
+	"""
+	Removes special characters, keeping only alphanumeric characters, spaces, commas, periods, and newlines.
+
+	Args:
+		text (str): The input text.
+
+	Returns:
+		str: Cleaned text.
+	"""
+	regex = re.compile("[^a-zA-Z0-9\s,.\n']")
+	return regex.sub('', text)
+
+
+def find_item_with_digit(input_list):
+    """
+    Finds the first item in the list that contains a digit.
+    If no such item exists, returns an empty list.
+    
+    :param input_list: List of strings
+    :return: First string containing a digit or an empty list
+    """
+    for item in input_list:
+        if any(char.isdigit() for char in item):
+            return item
+    return []
+
+
+def find_prefixes(name):
+	#return re.findall(r'\b([vd]\.?[a-z]{0,2})\b', name)
+	#return re.findall(r'(?<!\S)[vdt]\.?[a-z]{0,2}', name)
+	return re.findall(r'(?:(?<=\s)|(?<=^)|(?<=\.))[vd]\.?[a-z]{0,2}', name)
+
+
+def find_initials(name):
+	return re.findall(r'\b[A-Z]\.', name)
+
+
+def find_name(person):
+	name = person['name']
+	name = strip_text(name)
+	name = dot_initials(name)
+	#print(name)
+	initials = find_initials(name)
+	prefixes = find_prefixes(name)
+	if prefixes:
+		index = name.rfind(prefixes[-1])
+		length = len(prefixes[-1])
+		full_name = name[:index+length]
+		rest = name[index+length:]
+		return full_name, rest
+	elif initials:
+		index = name.rfind(initials[-1])
+		length = len(initials[-1])
+		full_name = name[:index+length]
+		rest = name[index+length:]
+		return full_name, rest
+	else:
+		full_name = name
+		rest = ''
+	
+	return full_name, rest
+
+
+
+def post_process_person(person):
+	name = person['name']
+	job = person['jobTitle']
+
+	if not isinstance(person['address'], list):
+		person['address'] = [person['address']]
+
+	person['address'] = [part for part in person['address'] if part]
+	address = person['address']
+
+	if len(address) > 1:
+		if ')' in job:
+			person['name'] = name + job
+			if len(address) > 1:
+				person['jobTitle'] = address[0]
+				person['address'] = address[1:]
+			else:
+				person['jobTitle'] = 'None'
+
+	elif not address and any(char.isdigit() for char in person['jobTitle']):
+		person['address'] = person['jobTitle']
+		person['jobTitle'] = 'None'
+
+	if not isinstance(person['address'], list):
+		person['address'] = [person['address']]
+
+	address1 = person['address']
+	person['address'] = [part for part in person['address'] if any(char.isdigit() for char in part)]
+	if len(person['address']) >= 1:
+		person['address'] = person['address'][0]
+
+	if not person['address']:
+		old_address = "".join(address1)
+		if len(old_address) > 5:
+			person['address'] = old_address
+		#print(person)
+
+
+	if any(char.isdigit() for char in person['jobTitle']) and person['address']:
+		temp_address = person['address']
+		#re.sub(r'[0-9\s]', '', temp_address)
+		temp_address = re.sub(r"[^a-zA-Z.,()\-'\" ]", '', temp_address)
+		if len(temp_address) < 5:
+			person['address'] = person['jobTitle']
+			person['jobTitle'] = 'None'
+
+	full_name, rest = find_name(person)
+	#print(f'name: {full_name} -> rest: {rest}')
+	rest = rest.strip('.')
+	if rest != '':
+		regex = re.compile("[^a-zA-Z]")
+		address = person['address']
+		if not person['address']:
+			address = ''
+		else:
+			address = regex.sub('', person['address'])
+
+		if address == '' or address[0].islower():
+			print(f'address found: {rest}')
+		elif person['jobTitle'] == 'None' and not any(char.isdigit() for char in rest):
+			print(f'job found: {rest}')
+
+	return person
+
+
 def process_sentences(sentences):
 	# Processed list to store combined sentences
 	processed_sentences = []
@@ -106,11 +256,11 @@ def process_sentences(sentences):
 	
 	return processed_sentences
 
-year = "1900"
+year = "1911"
 path_to_json = f"book_text/{year}.json"
 
 data = load_json(path_to_json)
-first_page, last_page = 7, 248
+first_page, last_page = 107, 414
 
 if data:
 	person_list = []
@@ -136,8 +286,9 @@ if data:
 					job = parts[1]
 					address = parts[2:]
 				person = make_person(name, job, address)
+				person = post_process_person(person)
 				print(person)
 				person_list.append(person)
 		print('\n')
-	
+
 	print(f'Amount of people extracted: {len(person_list)}')
