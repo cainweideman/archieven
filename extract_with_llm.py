@@ -33,6 +33,7 @@ def System_Message(jsonschema):
     Parse and extract the three fields: Name, Job Title, and Address.
     Handle minor OCR inconsistencies, such as extra spaces or missing punctuation.
     Ensure correct parsing even if the house number is missing in the address.
+	If multiple persons can be found in the sentence, extract all of them.
 
 	Additional Considerations:
 	- Use separators like commas, line breaks, and key phrases to distinguish elements.
